@@ -421,3 +421,267 @@ footer {
 
     cursor: not-allowed;
 }
+
+/* =========================
+   Accessibility Challenge
+   ========================= */
+
+.challenge-section {
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    padding: 0 24px;
+}
+
+.challenge-card {
+    margin-top: 24px;
+
+    background: white;
+
+    border: 1px solid #d9dee3;
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================
+   Flawed Interface
+   ========================= */
+
+.flawed-interface {
+    margin-bottom: 28px;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+}
+
+.flawed-interface h3 {
+    margin-top: 0;
+}
+
+
+/*
+   Intentionally poor contrast.
+   This is the accessibility problem
+   users are supposed to identify.
+*/
+
+.flawed-button {
+    background: #ffffff;
+
+    color: #d9d9d9;
+
+    border: 1px solid #eeeeee;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font: inherit;
+}
+
+
+/* =========================
+   Answer Options
+   ========================= */
+
+.answer-options {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+
+    padding: 20px;
+}
+
+.answer-options legend {
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.answer-options label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.answer-options input {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* =========================
+   Feedback
+   ========================= */
+
+.challenge-feedback {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.challenge-feedback.correct {
+    background: #e8f5e9;
+
+    border: 1px solid #2e7d32;
+
+    color: #1b5e20;
+}
+
+.challenge-feedback.incorrect {
+    background: #ffebee;
+
+    border: 1px solid #c62828;
+
+    color: #b71c1c;
+}
+
+/* =========================
+   Keyboard Navigation Demo
+   ========================= */
+
+.keyboard-demo {
+    margin-bottom: 28px;
+
+    padding: 28px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d9dee3;
+
+    border-radius: 12px;
+}
+
+.keyboard-demo h3 {
+    margin-top: 0;
+
+    font-size: 1.4rem;
+}
+
+.keyboard-setting {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 0;
+
+    border-top: 1px solid #d9dee3;
+}
+
+
+/* Intentionally flawed control */
+
+.fake-toggle {
+    padding: 10px 18px;
+
+    background: #1f2933;
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.demo-button {
+    padding: 10px 18px;
+
+    background: white;
+
+    color: #1f2933;
+
+    border: 2px solid #1f2933;
+
+    border-radius: 8px;
+
+    font: inherit;
+
+    font-weight: 600;
+}
+
+.demo-button:focus-visible {
+    outline: 4px solid #2563eb;
+
+    outline-offset: 3px;
+}
+/* =========================
+   Form Accessibility Demo
+   ========================= */
+
+.flawed-form {
+    margin-bottom: 28px;
+
+    padding: 28px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d9dee3;
+
+    border-radius: 12px;
+}
+
+.form-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.form-field span,
+.form-field label {
+    font-weight: 700;
+}
+
+.form-field input {
+    max-width: 500px;
+
+    padding: 12px 14px;
+
+    border: 2px solid #9aa5b1;
+
+    border-radius: 8px;
+
+    font: inherit;
+}
+
+.form-field input:focus {
+    border-color: #2563eb;
+
+    outline: 4px solid #bfdbfe;
+
+    outline-offset: 2px;
+}

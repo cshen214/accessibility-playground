@@ -94,3 +94,344 @@ increaseFontButton.addEventListener("click", () => {
 
 
 updateFontSize();
+
+// =========================
+// Accessibility Challenge
+// =========================
+
+
+const continueButton =
+    document.getElementById("continueButton");
+
+const challengeSection =
+    document.getElementById("challengeSection");
+
+const submitAnswerButton =
+    document.getElementById("submitAnswerButton");
+
+const challengeFeedback =
+    document.getElementById("challengeFeedback");
+
+
+continueButton.addEventListener("click", () => {
+
+    challengeSection.hidden = false;
+
+    challengeSection.scrollIntoView({
+        behavior: "smooth"
+    });
+
+    continueButton.textContent = "Challenge Started";
+    continueButton.disabled = true;
+});
+
+
+submitAnswerButton.addEventListener("click", async () => {
+
+    const selectedAnswer =
+        document.querySelector(
+            'input[name="challenge1"]:checked'
+        );
+
+
+    // Make sure the user selected an answer
+
+    if (!selectedAnswer) {
+
+        challengeFeedback.hidden = false;
+
+        challengeFeedback.className =
+            "challenge-feedback incorrect";
+
+        challengeFeedback.textContent =
+            "Please select an answer before continuing.";
+
+        return;
+    }
+
+
+    // Send the answer to Spring Boot
+
+    try {
+
+        const response = await fetch(
+            "/api/challenges/1/answer",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    answer: selectedAnswer.value
+                })
+            }
+        );
+
+
+        // Convert Spring Boot's response into JavaScript
+
+        const result = await response.json();
+
+
+        // Display the result
+
+        challengeFeedback.hidden = false;
+
+        if (result.correct) {
+
+            challengeFeedback.className =
+                "challenge-feedback correct";
+
+            challengeFeedback.textContent =
+                result.feedback;
+
+
+            // Move to Challenge 2
+
+            setTimeout(() => {
+
+                const challenge2Section =
+                    document.getElementById(
+                        "challenge2Section"
+                    );
+
+                challenge2Section.hidden = false;
+
+                challenge2Section.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }, 1000);
+
+        } else {
+
+            challengeFeedback.className =
+                "challenge-feedback incorrect";
+
+            challengeFeedback.textContent =
+                result.feedback;
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Error checking answer:",
+            error
+        );
+
+        challengeFeedback.hidden = false;
+
+        challengeFeedback.className =
+            "challenge-feedback incorrect";
+
+        challengeFeedback.textContent =
+            "Something went wrong while checking your answer. Please try again.";
+    }
+
+});
+
+// =========================
+// Accessibility Challenge 2
+// =========================
+const challenge2Section =
+    document.getElementById("challenge2Section");
+
+const submitChallenge2Button =
+    document.getElementById("submitChallenge2Button");
+
+const challenge2Feedback =
+    document.getElementById("challenge2Feedback");
+
+
+submitChallenge2Button.addEventListener("click", async () => {
+
+    const selectedAnswer =
+        document.querySelector(
+            'input[name="challenge2"]:checked'
+        );
+
+
+    if (!selectedAnswer) {
+
+        challenge2Feedback.hidden = false;
+
+        challenge2Feedback.className =
+            "challenge-feedback incorrect";
+
+        challenge2Feedback.textContent =
+            "Please select an answer before continuing.";
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            "/api/challenges/2/answer",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    answer: selectedAnswer.value
+                })
+            }
+        );
+
+
+        const result = await response.json();
+
+
+        challenge2Feedback.hidden = false;
+
+
+        if (result.correct) {
+
+            challenge2Feedback.className =
+                "challenge-feedback correct";
+
+            challenge2Feedback.textContent =
+                result.feedback;
+
+
+            setTimeout(() => {
+
+                const challenge3Section =
+                    document.getElementById(
+                        "challenge3Section"
+                    );
+
+                challenge3Section.hidden = false;
+
+                challenge3Section.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }, 1000);
+
+        } else {
+
+            challenge2Feedback.className =
+                "challenge-feedback incorrect";
+
+            challenge2Feedback.textContent =
+                result.feedback;
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Error checking answer:",
+            error
+        );
+
+        challenge2Feedback.hidden = false;
+
+        challenge2Feedback.className =
+            "challenge-feedback incorrect";
+
+        challenge2Feedback.textContent =
+            "Something went wrong while checking your answer. Please try again.";
+    }
+
+});
+
+// =========================
+// Accessibility Challenge 3
+// =========================
+
+const submitChallenge3Button =
+    document.getElementById("submitChallenge3Button");
+
+const challenge3Feedback =
+    document.getElementById("challenge3Feedback");
+
+
+submitChallenge3Button.addEventListener("click", async () => {
+
+    const selectedAnswer =
+        document.querySelector(
+            'input[name="challenge3"]:checked'
+        );
+
+
+    if (!selectedAnswer) {
+
+        challenge3Feedback.hidden = false;
+
+        challenge3Feedback.className =
+            "challenge-feedback incorrect";
+
+        challenge3Feedback.textContent =
+            "Please select an answer before continuing.";
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            "/api/challenges/3/answer",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    answer: selectedAnswer.value
+                })
+            }
+        );
+
+
+        const result = await response.json();
+
+
+        challenge3Feedback.hidden = false;
+
+
+        if (result.correct) {
+
+            challenge3Feedback.className =
+                "challenge-feedback correct";
+
+            challenge3Feedback.textContent =
+                result.feedback;
+
+        } else {
+
+            challenge3Feedback.className =
+                "challenge-feedback incorrect";
+
+            challenge3Feedback.textContent =
+                result.feedback;
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Error checking answer:",
+            error
+        );
+
+        challenge3Feedback.hidden = false;
+
+        challenge3Feedback.className =
+            "challenge-feedback incorrect";
+
+        challenge3Feedback.textContent =
+            "Something went wrong while checking your answer. Please try again.";
+    }
+
+});

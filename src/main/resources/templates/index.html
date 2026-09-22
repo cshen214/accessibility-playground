@@ -188,8 +188,10 @@
             to see how the experience changes.
         </p>
 
-        <button class="primary-button">
-            Continue
+        <button
+            id="continueButton"
+            class="primary-button">
+            Start Accessibility Quiz
         </button>
 
     </article>
@@ -197,6 +199,380 @@
 </section>
 
 </main>
+<!-- Accessibility Challenge -->
+
+<section
+    id="challengeSection"
+    class="challenge-section"
+    hidden>
+
+    <div class="section-heading">
+
+        <span class="preview-label">
+            CHALLENGE 1
+        </span>
+
+        <h2>
+            Can you spot the accessibility problem?
+        </h2>
+
+        <p>
+            Look at the interface below and identify
+            the accessibility issue.
+        </p>
+
+    </div>
+
+
+    <article class="challenge-card">
+
+        <div class="flawed-interface">
+
+            <h3>
+                Important Information
+            </h3>
+
+            <p>
+                This message contains information
+                that users need to read.
+            </p>
+
+            <button class="flawed-button">
+                Learn More
+            </button>
+
+        </div>
+
+
+        <fieldset class="answer-options">
+
+            <legend>
+                What is the accessibility problem?
+            </legend>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge1"
+                    value="font">
+                The font is too large
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge1"
+                    value="contrast">
+                The color contrast is too low
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge1"
+                    value="motion">
+                The interface has too much animation
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge1"
+                    value="layout">
+                The layout contains too much whitespace
+            </label>
+
+        </fieldset>
+
+
+        <button
+            id="submitAnswerButton"
+            class="primary-button">
+
+            Check Answer
+
+        </button>
+
+
+        <div
+            id="challengeFeedback"
+            class="challenge-feedback"
+            aria-live="polite"
+            hidden>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- Accessibility Challenge 2 -->
+
+<section
+    id="challenge2Section"
+    class="challenge-section"
+    hidden>
+
+    <div class="section-heading">
+
+        <span class="preview-label">
+            CHALLENGE 2
+        </span>
+
+        <h2>
+            Can you navigate this interface using only a keyboard?
+        </h2>
+
+        <p>
+            Try using the Tab key to move through the controls.
+            Identify the accessibility problem.
+        </p>
+
+    </div>
+
+
+    <article class="challenge-card">
+
+        <div class="keyboard-demo">
+
+            <h3>
+                Account Settings
+            </h3>
+
+            <p>
+                Use the controls below to update your preferences.
+            </p>
+
+
+            <div class="keyboard-setting">
+
+                <span>
+                    Email Notifications
+                </span>
+
+                <div
+                    class="fake-toggle"
+                    role="button"
+                    tabindex="-1">
+
+                    ON
+
+                </div>
+
+            </div>
+
+
+            <div class="keyboard-setting">
+
+                <span>
+                    Dark Mode
+                </span>
+
+                <button class="demo-button">
+                    Enable
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <fieldset class="answer-options">
+
+            <legend>
+                What is the accessibility problem?
+            </legend>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge2"
+                    value="contrast">
+
+                The colors have low contrast
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge2"
+                    value="keyboard">
+
+                The email notification control cannot be reached using the keyboard
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge2"
+                    value="font">
+
+                The text is too small
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge2"
+                    value="spacing">
+
+                There is not enough spacing
+
+            </label>
+
+        </fieldset>
+
+
+        <button
+            id="submitChallenge2Button"
+            class="primary-button">
+
+            Check Answer
+
+        </button>
+
+
+        <div
+            id="challenge2Feedback"
+            class="challenge-feedback"
+            aria-live="polite"
+            hidden>
+
+        </div>
+
+    </article>
+
+</section>
+<!-- Accessibility Challenge 3 -->
+
+<section
+    id="challenge3Section"
+    class="challenge-section"
+    hidden>
+
+    <div class="section-heading">
+
+        <span class="preview-label">
+            CHALLENGE 3
+        </span>
+
+        <h2>
+            Can you identify the form accessibility problem?
+        </h2>
+
+        <p>
+            Look at the form below and identify what could
+            make it difficult for some users to complete.
+        </p>
+
+    </div>
+
+
+    <article class="challenge-card">
+
+        <form class="flawed-form">
+
+            <div class="form-field">
+
+                <span>
+                    Email Address
+                </span>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email">
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password">
+
+            </div>
+
+        </form>
+
+
+        <fieldset class="answer-options">
+
+            <legend>
+                What is the accessibility problem?
+            </legend>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge3"
+                    value="label">
+
+                The email input does not have a proper label
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge3"
+                    value="contrast">
+
+                The form has poor color contrast
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge3"
+                    value="password">
+
+                Password fields should not be used
+
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="challenge3"
+                    value="spacing">
+
+                The fields have too much spacing
+
+            </label>
+
+        </fieldset>
+
+
+        <button
+            id="submitChallenge3Button"
+            class="primary-button">
+
+            Check Answer
+
+        </button>
+
+
+        <div
+            id="challenge3Feedback"
+            class="challenge-feedback"
+            aria-live="polite"
+            hidden>
+
+        </div>
+
+    </article>
+
+</section>
 
 <footer>
 
