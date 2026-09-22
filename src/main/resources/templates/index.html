@@ -1,53 +1,212 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Accessibility Playground</title>
+<title>Accessibility Playground</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
 
-    <header>
-        <h1>Accessibility Playground</h1>
+<header class="site-header">
 
-        <p>
-            Explore how accessibility settings can change
-            a digital experience.
-        </p>
-    </header>
+<div class="header-content">
 
-    <main>
+    <div class="title-section">
 
-        <section>
-            <h2>Accessibility Settings</h2>
+        <span class="title-icon" aria-hidden="true">
+            ♿
+        </span>
 
-            <button>
-                Enable High Contrast
-            </button>
-
-            <button>
-                Reduce Motion
-            </button>
-        </section>
-
-        <section>
-            <h2>Preview</h2>
-
-            <h3>Welcome!</h3>
+        <div>
+            <h1>Accessibility Playground</h1>
 
             <p>
-                This is an example interface.
+                Explore how different accessibility
+                settings can change a digital experience.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</header>
+
+<main class="playground">
+
+<!-- Settings Panel -->
+
+<section class="settings-panel">
+
+    <div class="section-heading">
+
+        <h2>Accessibility Settings</h2>
+
+        <p>
+            Adjust these settings to change the
+            preview experience.
+        </p>
+
+    </div>
+
+
+    <!-- High Contrast -->
+
+    <div class="setting">
+
+        <div class="setting-text">
+
+            <h3>High Contrast</h3>
+
+            <p>
+                Increase contrast between text
+                and the background.
             </p>
 
-            <button>
-                Continue
-            </button>
-        </section>
+        </div>
 
-    </main>
+        <button
+            id="contrastButton"
+            class="toggle-button">
+
+            Enable High Contrast
+
+        </button>
+
+    </div>
+
+
+    <!-- Reduced Motion -->
+
+    <div class="setting">
+
+        <div class="setting-text">
+
+            <h3>Reduced Motion</h3>
+
+            <p>
+                Minimize animations and transitions.
+            </p>
+
+        </div>
+
+        <button
+            id="motionButton"
+            class="toggle-button">
+
+            Reduce Motion
+
+        </button>
+
+    </div>
+
+
+    <!-- Text Size -->
+
+    <div class="setting">
+
+        <div class="setting-text">
+
+            <h3>Text Size</h3>
+
+            <p>
+                Increase or decrease the size of text
+                throughout the interface.
+            </p>
+
+        </div>
+
+        <div class="font-size-controls">
+
+            <button
+                id="decreaseFontButton"
+                class="font-button"
+                aria-label="Decrease text size">
+
+                −
+
+            </button>
+
+            <span
+                id="fontSizeDisplay"
+                aria-live="polite">
+
+                100%
+
+            </span>
+
+            <button
+                id="increaseFontButton"
+                class="font-button"
+                aria-label="Increase text size">
+
+                +
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Preview Panel -->
+
+<section class="preview-panel">
+
+    <div class="section-heading">
+
+        <h2>Preview</h2>
+
+        <p>
+            See how accessibility settings affect
+            a sample interface.
+        </p>
+
+    </div>
+
+
+    <!-- Sample Interface -->
+
+    <article class="preview-card">
+
+        <span class="preview-label">
+            SAMPLE INTERFACE
+        </span>
+
+        <h3>Welcome!</h3>
+
+        <p>
+            This is an example interface.
+            Try changing the accessibility settings
+            to see how the experience changes.
+        </p>
+
+        <button class="primary-button">
+            Continue
+        </button>
+
+    </article>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+    Built to explore accessible interface design.
+</p>
+
+</footer>
+
+<script src="/js/script.js"></script>
 
 </body>
 
