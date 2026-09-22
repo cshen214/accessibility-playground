@@ -1,7 +1,10 @@
 package accessibility_playground.service;
 
 import accessibility_playground.model.Challenge;
+import accessibility_playground.model.ChallengeResponse;
+
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -38,6 +41,17 @@ public class ChallengeService {
 
     public List<Challenge> getAllChallenges() {
         return challenges;
+    }
+
+    public List<ChallengeResponse> getAllChallengeResponses() {
+
+        return challenges.stream()
+            .map(challenge -> new ChallengeResponse(
+                    challenge.getId(),
+                    challenge.getTitle(),
+                    challenge.getQuestion()
+            ))
+            .collect(Collectors.toList());
     }
 
 

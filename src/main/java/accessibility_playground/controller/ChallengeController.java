@@ -1,6 +1,7 @@
 package accessibility_playground.controller;
 
 import accessibility_playground.model.Challenge;
+import accessibility_playground.model.ChallengeResponse;
 import accessibility_playground.service.ChallengeService;
 
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,8 @@ public class ChallengeController {
 
 
     @GetMapping
-    public List<Challenge> getChallenges() {
-
-        return challengeService.getAllChallenges();
+    public List<ChallengeResponse> getChallenges() {
+        return challengeService.getAllChallengeResponses();
     }
 
 
