@@ -77,5 +77,23 @@ public class ChallengeService {
 
         return challenge.getCorrectAnswer()
                 .equals(answer);
+        }
+    public int calculateScore(List<String> answers) {
+
+        int score = 0;
+
+        for (int i = 0; i < challenges.size(); i++) {
+
+            if (i < answers.size()
+                    && challenges.get(i)
+                            .getCorrectAnswer()
+                            .equals(answers.get(i))) {
+
+                score++;
+            }
+        }
+
+        return score;
     }
 }
+

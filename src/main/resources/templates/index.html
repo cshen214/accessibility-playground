@@ -208,10 +208,17 @@
 
     <div class="section-heading">
 
+
         <span class="preview-label">
             CHALLENGE 1
         </span>
-
+        <div
+            id="currentScore"
+            class="current-score"
+            aria-live="polite"
+        >
+            Score: 0 / 3
+        </div>
         <h2>
             Can you spot the accessibility problem?
         </h2>
@@ -315,10 +322,19 @@
 
     <div class="section-heading">
 
-        <span class="preview-label">
-            CHALLENGE 2
-        </span>
-
+    <h2
+        id="challenge2Heading"
+        tabindex="-1"
+    >
+        CHALLENGE 2
+    </h2>
+        <div
+            id="currentScore"
+            class="current-score"
+            aria-live="polite"
+        >
+            Score: 1 / 3
+        </div>
         <h2>
             Can you navigate this interface using only a keyboard?
         </h2>
@@ -455,9 +471,19 @@
 
     <div class="section-heading">
 
-        <span class="preview-label">
-            CHALLENGE 3
-        </span>
+    <h2
+        id="challenge3Heading"
+        tabindex="-1"
+    >
+        CHALLENGE 3
+    </h2>
+        <div
+            id="currentScore"
+            class="current-score"
+            aria-live="polite"
+        >
+            Score: 2 / 3
+        </div>
 
         <h2>
             Can you identify the form accessibility problem?
@@ -572,6 +598,41 @@
 
     </article>
 
+</section>
+
+<section
+    id="scoreSection"
+    class="score-section"
+    hidden
+>
+    <div class="score-card">
+
+        <h2>Accessibility Challenge Complete!</h2>
+
+        <p class="score-label">
+            Your Score
+        </p>
+
+        <p
+            id="scoreDisplay"
+            class="score-display"
+        >
+            0 / 3
+        </p>
+
+        <p
+            id="scoreMessage"
+            class="score-message"
+        ></p>
+
+        <button
+            id="restartButton"
+            class="primary-button"
+        >
+            Try Again
+        </button>
+
+    </div>
 </section>
 
 <footer>

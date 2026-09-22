@@ -1,6 +1,19 @@
 const contrastButton = document.getElementById("contrastButton");
 const motionButton = document.getElementById("motionButton");
+const currentScore =
+    document.getElementById("currentScore");
 
+const scoreSection =
+    document.getElementById("scoreSection");
+
+const scoreDisplay =
+    document.getElementById("scoreDisplay");
+
+const scoreMessage =
+    document.getElementById("scoreMessage");
+
+const restartButton =
+    document.getElementById("restartButton");
 
 // =========================
 // High Contrast
@@ -112,17 +125,29 @@ const submitAnswerButton =
 const challengeFeedback =
     document.getElementById("challengeFeedback");
 
+const challenge2Heading =
+    document.getElementById("challenge2Heading");
+
+const challenge3Heading =
+    document.getElementById("challenge3Heading");
+
 
 continueButton.addEventListener("click", () => {
 
     challengeSection.hidden = false;
 
     challengeSection.scrollIntoView({
-        behavior: "smooth"
+        behavior:
+            document.body.classList.contains(
+                "reduced-motion"
+            )
+                ? "auto"
+                : "smooth"
     });
 
-    continueButton.textContent = "Challenge Started";
-    continueButton.disabled = true;
+        continueButton.textContent = "Start Challenge";
+        continueButton.disabled = false;
+        challengeSection.hidden = true;
 });
 
 
@@ -169,6 +194,12 @@ submitAnswerButton.addEventListener("click", async () => {
             }
         );
 
+        if (!response.ok) {
+            throw new Error(
+                `Server returned ${response.status}`
+            );
+        }
+
 
         // Convert Spring Boot's response into JavaScript
 
@@ -180,7 +211,9 @@ submitAnswerButton.addEventListener("click", async () => {
         challengeFeedback.hidden = false;
 
         if (result.correct) {
-
+            submitAnswerButton.disabled = true;
+            currentScore.textContent =
+                `Score: ${result.score} / ${result.total}`;
             challengeFeedback.className =
                 "challenge-feedback correct";
 
@@ -199,8 +232,17 @@ submitAnswerButton.addEventListener("click", async () => {
 
                 challenge2Section.hidden = false;
 
+                challenge2Heading.focus({
+                    preventScroll: true
+                });
+
                 challenge2Section.scrollIntoView({
-                    behavior: "smooth"
+                    behavior:
+                        document.body.classList.contains(
+                            "reduced-motion"
+                        )
+                            ? "auto"
+                            : "smooth"
                 });
 
             }, 1000);
@@ -284,6 +326,12 @@ submitChallenge2Button.addEventListener("click", async () => {
             }
         );
 
+        if (!response.ok) {
+            throw new Error(
+                `Server returned ${response.status}`
+            );
+        }
+
 
         const result = await response.json();
 
@@ -292,29 +340,37 @@ submitChallenge2Button.addEventListener("click", async () => {
 
 
         if (result.correct) {
+            submitAnswerButton.disabled = true;
+            currentScore.textContent =
+                `Score: ${result.score} / ${result.total}`;
 
             challenge2Feedback.className =
                 "challenge-feedback correct";
 
             challenge2Feedback.textContent =
                 result.feedback;
-
-
             setTimeout(() => {
 
                 const challenge3Section =
                     document.getElementById(
                         "challenge3Section"
                     );
-
                 challenge3Section.hidden = false;
 
+                challenge3Heading.focus({
+                    preventScroll: true
+                });
+
                 challenge3Section.scrollIntoView({
-                    behavior: "smooth"
+                    behavior:
+                        document.body.classList.contains(
+                            "reduced-motion"
+                        )
+                            ? "auto"
+                            : "smooth"
                 });
 
             }, 1000);
-
         } else {
 
             challenge2Feedback.className =
@@ -392,6 +448,11 @@ submitChallenge3Button.addEventListener("click", async () => {
                 })
             }
         );
+        if (!response.ok) {
+            throw new Error(
+                `Server returned ${response.status}`
+            );
+        }
 
 
         const result = await response.json();
@@ -401,6 +462,9 @@ submitChallenge3Button.addEventListener("click", async () => {
 
 
         if (result.correct) {
+            submitAnswerButton.disabled = true;
+            currentScore.textContent =
+                `Score: ${result.score} / ${result.total}`;
 
             challenge3Feedback.className =
                 "challenge-feedback correct";
@@ -408,6 +472,9 @@ submitChallenge3Button.addEventListener("click", async () => {
             challenge3Feedback.textContent =
                 result.feedback;
 
+            setTimeout(() => {
+                showFinalScore(result.score, result.total);
+            }, 1000);
         } else {
 
             challenge3Feedback.className =
@@ -434,4 +501,113 @@ submitChallenge3Button.addEventListener("click", async () => {
             "Something went wrong while checking your answer. Please try again.";
     }
 
+});
+
+
+function showFinalScore(score, total) {
+
+    scoreSection.hidden = false;
+
+    scoreDisplay.textContent =
+        `${score} / ${total}`;
+
+    if (score === total) {
+
+        scoreMessage.textContent =
+            "Excellent! You identified every accessibility issue.";
+
+    } else if (score >= 2) {
+
+        scoreMessage.textContent =
+            "Great job! You identified most of the accessibility issues.";
+
+    } else if (score === 1) {
+
+        scoreMessage.textContent =
+            "Good start! Keep practicing accessibility concepts.";
+
+    } else {
+
+        scoreMessage.textContent =
+            "Keep practicing! Accessibility takes practice.";
+    }
+
+    scoreSection.scrollIntoView({
+        behavior:
+            document.body.classList.contains(
+                "reduced-motion"
+            )
+                ? "auto"
+                : "smooth"
+    });
+}
+
+restartButton.addEventListener("click", async () => {
+
+    try {
+
+        const response = await fetch(
+            "/api/challenges/reset",
+            {
+                method: "POST"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `Server returned ${response.status}`
+            );
+        }
+
+        const result =
+            await response.json();
+
+        currentScore.textContent =
+            `Score: ${result.score} / ${result.total}`;
+
+        scoreSection.hidden = true;
+
+        document.getElementById(
+            "challengeSection"
+        ).hidden = false;
+
+        document.getElementById(
+            "challenge2Section"
+        ).hidden = true;
+
+        document.getElementById(
+            "challenge3Section"
+        ).hidden = true;
+
+        document.querySelectorAll(
+            'input[type="radio"]'
+        ).forEach((radio) => {
+            radio.checked = false;
+        });
+
+        document.querySelectorAll(
+            ".challenge-feedback"
+        ).forEach((feedback) => {
+            feedback.hidden = true;
+            feedback.textContent = "";
+        });
+
+        document.getElementById(
+            "challengeSection"
+        ).scrollIntoView({
+            behavior:
+                document.body.classList.contains(
+                    "reduced-motion"
+                )
+                    ? "auto"
+                    : "smooth"
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Error resetting challenge:",
+            error
+        );
+    }
 });

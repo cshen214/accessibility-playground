@@ -685,3 +685,41 @@ footer {
 
     outline-offset: 2px;
 }
+
+.score-section {
+    margin-top: 2rem;
+}
+
+.score-card {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.score-label {
+    margin-top: 2rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.score-display {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.score-message {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.current-score {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: #f0f4f8;
+    font-weight: 700;
+}
